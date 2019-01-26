@@ -40,7 +40,7 @@ function initialize() {
   document.getElementById("roundInd").innerText = "Round 1/" + numRound;
   clearCurrentDart();
   whitenPlayerScore();
-  document.getElementById("player0Score").style.color = "red";
+  document.getElementById("player0Score").style.backgroundColor = "red";
 }
 
 function hitNum(num) {
@@ -124,7 +124,7 @@ function pressEnter() {
     currentRoundMag = [1, 1, 1];
     currentRoundDartInd = 0;
     clearCurrentDart();
-    document.getElementById("player" + currentPlayer + "Score").style.color = "red";
+    document.getElementById("player" + currentPlayer + "Score").style.backgroundColor = "red";
 
   }
   // printlog("pressEnter");
@@ -138,6 +138,7 @@ function clearCurrentDart() {
 
 function whitenPlayerScore() {
   for (var player = 0; player < numPlayer; ++player) {
+    document.getElementById("player" + player + "Score").style.backgroundColor = "black";
     document.getElementById("player" + player + "Score").style.color = "white";
   }
 }
@@ -164,7 +165,7 @@ function pressDelete() {
       return;
     }
     currentRoundDartInd = 2;
-    document.getElementById("player" + currentPlayer + "Score").style.color = "red";
+    document.getElementById("player" + currentPlayer + "Score").style.backgroundColor = "red";
     currentRoundMag = hitMagRec[currentPlayer][currentRoundInd];
     currentRoundNum = hitNumRec[currentPlayer][currentRoundInd];
     hitMagRec[currentPlayer][currentRoundInd] = [0, 0, 0];
