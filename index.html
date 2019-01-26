@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .button {
+          /* background-color: rgb(0, 0, 0); */
+          border: none;
+          color: white;
+          padding: 0px 0px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 36px;
+          font-weight:bold;
+          margin: 0px 0px;
+          cursor: pointer;
+          }
+    </style>
+    <script>
+        function resize(){
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            // document.getElementById("left_div").style.height = h+"px";
+            // document.getElementById("right_div").style.height = h+"px";
+        }
+    </script>
+</head>
+
+<body style="background-color: black; margin: 0" onresize="resize()" onload="resize()">
+    <div id="left_div" style="float: left; width: 50%; height: 100vh;">
+            <button class="button" style="width: 100%; height: 30%; color: black; background-color: maroon"><s>301</s></button>
+            <button class="button" style="width: 100%; height: 40%; color: black; background-color: firebrick"><s>501</s></button>
+            <button class="button" style="width: 100%; height: 30%; color: black; background-color: sienna"><s>701</s></button>
+    </div>
+    <div id="right_div" style="float: right; width: 50%; height: 100vh;">
+
+            <button class="button" style="width: 100%; height: 50%; background-color: midnightblue" onclick="javascript:location.href='s-cricket.html'">Standard Cricket</button>
+            <button class="button" style="width: 100%; height: 50%; color: black; background-color: steelblue"><s>Team Cricket</s></button>
+    </div>
+   
+</body>
+
+</html>
