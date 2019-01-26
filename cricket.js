@@ -3,15 +3,13 @@ const dartScore = [20, 19, 18, 17, 16, 15, 25];
 var hitTimes = 0;
 var numPlayer = 4,
   numRound = 15;
-var hitNumRec = new Array(numPlayer),
-  hitMagRec = new Array(numPlayer),
-  hitNumTimes = new Array(numPlayer);
+var hitNumRec, hitMagRec, hitNumTimes, playerScore;
 var currentRoundNum = [0, 0, 0],
   currentRoundMag = [1, 1, 1],
   currentRoundDartInd = 0,
   currentRoundInd = 0,
   currentPlayer = 0;
-var playerScore = new Array(numPlayer);
+var MPR80Stuts, MPR100Stuts, close6Num;
 
 function initialize() {
   hitTimes = 0, currentRoundNum = [0, 0, 0], currentRoundMag = [1, 1, 1], currentRoundDartInd = 0, currentRoundInd = 0, currentPlayer = 0;
@@ -19,11 +17,17 @@ function initialize() {
   hitMagRec = new Array(numPlayer);
   hitNumTimes = new Array(numPlayer);
   playerScore = new Array(numPlayer);
+  MPR80Stuts = new Array(numPlayer);
+  MPR100Stuts = new Array(numPlayer);
+  close6Num = new Array(numPlayer);
   for (var player = 0; player < numPlayer; ++player) {
     hitNumRec[player] = new Array(numRound);
     hitMagRec[player] = new Array(numRound);
     hitNumTimes[player] = new Array(0, 0, 0, 0, 0, 0, 0); // 20, 19, 18, 17, 16, 15, Bull
     playerScore[player] = 0;
+    MPR80Stuts[player] = 0;
+    MPR100Stuts[player] = 0;
+    close6Num[player] = 0;
     for (var round = 0; round < numRound; ++round) {
       hitNumRec[player][round] = [0, 0, 0];
       hitMagRec[player][round] = [0, 0, 0];
@@ -92,9 +96,9 @@ function pressEnter() {
         document.getElementById("roundInd").innerText = "Round " + (currentRoundInd + 1) + "/" + numRound;
       } else {
         if (confirm("Are you sure want to end this game?")) {
-          updatePlayerScore();
           ++currentRoundInd;
           currentPlayer = 0;
+          updatePlayerScore();
           currentRoundDartInd = 0;
           currentRoundNum = [0, 0, 0];
           currentRoundMag = [1, 1, 1];
@@ -213,6 +217,31 @@ function updatePlayerScore() {
     for (var score_i = 0; score_i <= dartScore.length; ++score_i) {
       updatePicture("player" + player + "Num" + dartScore[score_i], hitNumTimes[player][score_i]);
     }
+  }
+  calculateMPR();
+}
+
+//var MPR80Stuts, MPR100Stuts, close6Num;
+function calculateMPR() {
+  for (var player = 0; player < numPlayer; ++player) {
+    var totalCount = 0,
+      toatalClose = 0;
+    for (var score_i = 0; score_i < dartScore.length; ++score_i) {
+      totalCount += hitNumTimes[player][score_i];
+      if (hitNumTimes[player][score_i] >= 3) {
+        ++toatalClose;
+      }
+    }
+    if (player < currentPlayer) {
+      MPR100Stuts[player] = totalCount / (currentRoundInd + 1);
+    } else if (currentRoundInd != 0) {
+      MPR100Stuts[player] = totalCount / (currentRoundInd);
+    }
+    if (close6Num[player] == 0) {
+      MPR80Stuts[player] = MPR100Stuts[player];
+      if (toatalClose >= 6) close6Num[player] = 1;
+    }
+    document.getElementById("player" + player + "MPR").innerHTML = Number((MPR80Stuts[player]).toFixed(2)) + " (" + Number((MPR100Stuts[player]).toFixed(2)) + ")";
   }
 }
 
