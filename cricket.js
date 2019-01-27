@@ -1,4 +1,5 @@
-const dartState = ["Miss", "S", "D", "T"];
+const dartState = ["MISS", "SINGLE ", "DOUBLE ", "TRIPLE "];
+
 const dartScore = [20, 19, 18, 17, 16, 15, 25];
 const playerIndexOrderInHtml=[
   [1],
@@ -8,7 +9,7 @@ const playerIndexOrderInHtml=[
 ];
 var hitTimes = 0;
 var numPlayer = 4,
-  numRound = 15;
+  numRound = 1;
 var hitNumRec, hitMagRec, hitNumTimes, playerScore;
 var currentRoundNum = [0, 0, 0],
   currentRoundMag = [1, 1, 1],
@@ -54,6 +55,7 @@ function initialize() {
   clearCurrentDart();
   whitenPlayerScore();
   document.getElementById("player0Score").style.backgroundColor = "red";
+  document.getElementById("btnEnter").style.color="white";
 }
 
 function hitNum(num) {
@@ -62,25 +64,40 @@ function hitNum(num) {
     showCurrentDart(currentRoundDartInd);
     ++currentRoundDartInd;
   }
-  //printlog("hitNum");
+  if (currentRoundDartInd == 3){
+    document.getElementById("btnEnter").style.color="red";
+  }
 }
 
 function showCurrentDart(index) {
+  var showText = dartState[currentRoundMag[index]];
+  var showColor = "white";
   if (currentRoundNum[index] == 25) {
-    document.getElementById("currentDart" + index).innerText = dartState[[currentRoundMag[index]]] + "-Bull";
-  } else if (currentRoundNum[index] == 0) {
-    document.getElementById("currentDart" + index).innerText = "Miss";
-  } else {
-    document.getElementById("currentDart" + index).innerText = dartState[[currentRoundMag[index]]] + currentRoundNum[index];
+    showText += "BULL";
+    showColor = "red";
+  } else if (currentRoundNum[index] >= 15){
+    showText += currentRoundNum[index];
+    if (currentRoundMag[index] == 3){
+      showColor = "Lime";
+    }else if (currentRoundMag[index] == 2){
+      showColor = "Cyan";
+    }
   }
+  document.getElementById("currentDart" + index).innerText = showText;
+  document.getElementById("currentDart" + index).style.color = showColor;
+
 }
 
 function hitMiss() {
   if (currentRoundDartInd < 3) {
     currentRoundNum[currentRoundDartInd] = 0;
     currentRoundMag[currentRoundDartInd] = 0;
-    document.getElementById("currentDart" + currentRoundDartInd).innerText = "Miss";
+    document.getElementById("currentDart" + currentRoundDartInd).innerText = "MISS";
     ++currentRoundDartInd;
+  }
+  
+  if (currentRoundDartInd == 3){
+    document.getElementById("btnEnter").style.color="red";
   }
   // printlog("hitMiss");
 }
@@ -128,6 +145,10 @@ function pressEnter() {
             }
           }
         } else {}
+        
+        if (currentRoundDartInd < 3){
+          document.getElementById("btnEnter").style.color="white";
+        }
         return;
       }
     }
@@ -140,13 +161,18 @@ function pressEnter() {
     document.getElementById("player" + currentPlayer + "Score").style.backgroundColor = "red";
 
   }
+  
+  if (currentRoundDartInd < 3){
+    document.getElementById("btnEnter").style.color="white";
+  }
   // printlog("pressEnter");
 }
 
 function clearCurrentDart() {
-  document.getElementById("currentDart" + 0).innerText = "-";
-  document.getElementById("currentDart" + 1).innerText = "-";
-  document.getElementById("currentDart" + 2).innerText = "-";
+  for (var i = 0; i < 3; ++i){
+    document.getElementById("currentDart" + i).innerText = "-";
+    document.getElementById("currentDart" + i).style.color = "white";
+  }
 }
 
 function whitenPlayerScore() {
@@ -163,6 +189,7 @@ function pressDelete() {
     currentRoundNum[currentRoundDartInd] = 0;
     currentRoundMag[currentRoundDartInd] = 1;
     document.getElementById("currentDart" + currentRoundDartInd).innerText = "-";
+    document.getElementById("currentDart" + currentRoundDartInd).style.color = "white";
   } else {
     whitenPlayerScore();
     clearCurrentDart();
@@ -188,6 +215,9 @@ function pressDelete() {
     showCurrentDart(0);
     showCurrentDart(1);
     updatePlayerScore();
+  }
+  if (currentRoundDartInd < 3){
+    document.getElementById("btnEnter").style.color="white";
   }
   // printlog("pressDelete");
 }
