@@ -93,7 +93,7 @@ function pressEnter() {
       if ((currentRoundInd + 1) < numRound) {
         currentPlayer = 0;
         ++currentRoundInd;
-        document.getElementById("roundInd").innerText = "Round " + (currentRoundInd + 1) + "/" + numRound;
+        document.getElementById("roundInd").innerText = (currentRoundInd + 1) + " / " + numRound;
       } else {
         if (confirm("Are you sure want to end this game?")) {
           ++currentRoundInd;
@@ -149,7 +149,7 @@ function pressDelete() {
     --currentRoundDartInd;
     currentRoundNum[currentRoundDartInd] = 0;
     currentRoundMag[currentRoundDartInd] = 1;
-    document.getElementById("currentDart" + currentRoundDartInd).innerText = "";
+    document.getElementById("currentDart" + currentRoundDartInd).innerText = "-";
   } else {
     whitenPlayerScore();
     clearCurrentDart();
