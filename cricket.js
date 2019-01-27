@@ -1,5 +1,5 @@
 const dartState = ["MISS", "SINGLE ", "DOUBLE ", "TRIPLE "];
-
+const maxPlayerNum = 4;
 const dartScore = [20, 19, 18, 17, 16, 15, 25];
 const playerIndexOrderInHtml = [
   [1],
@@ -46,15 +46,23 @@ function initialize() {
       hitNumRec[player][round] = [0, 0, 0];
       hitMagRec[player][round] = [0, 0, 0];
     }
+  }
+
+  for (var player = 0; player < maxPlayerNum; ++player){
     for (var scoreInd = 0; scoreInd < dartScore.length; ++scoreInd) {
       document.getElementById("player" + player + "Num" + dartScore[scoreInd]).src = "null.png";
     }
     document.getElementById("player" + player + "Score").innerText = 0;
+    document.getElementById("player" + player + "ScoreDiv").style.backgroundColor = "black";
+    document.getElementById("player" + player + "Result").style.backgroundColor = "black";
+    document.getElementById("player" + player + "MPR").innerHTML = "0 (0)";
   }
+
   document.getElementById("roundInd").innerText = "1 / " + numRound;
   clearCurrentDart();
   whitenPlayerScore();
-  document.getElementById("player0Score").style.backgroundColor = "red";
+  document.getElementById("player" + currentPlayerIndexOrder[0] + "ScoreDiv").style.backgroundColor = "red";
+  document.getElementById("player" + currentPlayerIndexOrder[0] + "Result").style.backgroundColor = "rgb(47, 47, 47)";
   document.getElementById("btnEnter").style.color = "white";
 }
 
@@ -142,9 +150,9 @@ function pressEnter() {
             if (winnerScore > playerScore[player]) {
               winnerScore = playerScore[player];
               whitenPlayerScore();
-              document.getElementById("player" + player + "Score").style.color = "yellow";
+              document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "yellow";
             } else if (winnerScore == playerScore[player]) {
-              document.getElementById("player" + player + "Score").style.color = "yellow";
+              document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "yellow";
             }
           }
         } else {}
@@ -161,8 +169,8 @@ function pressEnter() {
     currentRoundMag = [1, 1, 1];
     currentRoundDartInd = 0;
     clearCurrentDart();
-    document.getElementById("player" + currentPlayer + "Score").style.backgroundColor = "red";
-
+    document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "ScoreDiv").style.backgroundColor = "red";
+    document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "Result").style.backgroundColor = "rgb(47, 47, 47)";
   }
 
   if (currentRoundDartInd < 3) {
@@ -179,9 +187,15 @@ function clearCurrentDart() {
 }
 
 function whitenPlayerScore() {
-  for (var player = 0; player < numPlayer; ++player) {
-    document.getElementById("player" + player + "Score").style.backgroundColor = "black";
-    document.getElementById("player" + player + "Score").style.color = "white";
+  for (var player = 0; player < maxPlayerNum; ++player) {
+    document.getElementById("player" + player + "ScoreDiv").style.backgroundColor = "black";
+    document.getElementById("player" + player + "Result").style.backgroundColor = "black";
+    document.getElementById("player" + player + "Score").style.color = "black";
+    document.getElementById("player" + player + "MPR").style.color = "black";
+  }
+  for (var player = 0; player < currentPlayerIndexOrder.length; ++player){
+    document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "white";
+    document.getElementById("player" + currentPlayerIndexOrder[player] + "MPR").style.color = "white";
   }
 }
 
@@ -208,7 +222,8 @@ function pressDelete() {
       return;
     }
     currentRoundDartInd = 2;
-    document.getElementById("player" + currentPlayer + "Score").style.backgroundColor = "red";
+    document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "ScoreDiv").style.backgroundColor = "red";
+    document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "Result").style.backgroundColor = "rgb(47, 47, 47)";
     currentRoundMag = hitMagRec[currentPlayer][currentRoundInd];
     currentRoundNum = hitNumRec[currentPlayer][currentRoundInd];
     hitMagRec[currentPlayer][currentRoundInd] = [0, 0, 0];
@@ -236,7 +251,8 @@ function updatePlayerScore() {
   }
   for (var round = 0; round <= currentRoundInd; ++round) {
     for (var player = 0; player < numPlayer; ++player) {
-      if (round == (numRound - 1) && player == (numPlayer - 1) && currentRoundDartInd == 3) {} else if (round == currentRoundInd && player >= currentPlayer) {
+      if (round == (numRound - 1) && player == (numPlayer - 1) && currentRoundDartInd == 3) {} 
+      else if (round == currentRoundInd && player >= currentPlayer) {
         break;
       }
       for (var i = 0; i < 3; ++i) {
@@ -260,9 +276,9 @@ function updatePlayerScore() {
   hitNumTimes = playerHitTimes;
   var allPlayerClose = [0, 0, 0, 0, 0, 0, 0]; // 20, 19, 18 ... 15,  Bull
   for (var player = 0; player < numPlayer; ++player) {
-    document.getElementById("player" + player + "Score").innerText = playerScore[player];
+    document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").innerText = playerScore[player];
     for (var score_i = 0; score_i < dartScore.length; ++score_i) {
-      updatePicture("player" + player + "Num" + dartScore[score_i], hitNumTimes[player][score_i]);
+      updatePicture("player" + currentPlayerIndexOrder[player] + "Num" + dartScore[score_i], hitNumTimes[player][score_i]);
       if (hitNumTimes[player][score_i] >= 3){
         ++allPlayerClose[score_i];
       }
@@ -272,9 +288,9 @@ function updatePlayerScore() {
     for (var player = 0; player < numPlayer; ++player) {
       // console.log("player" + player + "Num" + dartScore[score_i]);
       if(allPlayerClose[score_i] == numPlayer){
-        document.getElementById("player" + player + "Num" + dartScore[score_i]).style.opacity = "0.3";
+        document.getElementById("player" + currentPlayerIndexOrder[player] + "Num" + dartScore[score_i]).style.opacity = "0.3";
       }else{
-        document.getElementById("player" + player + "Num" + dartScore[score_i]).style.opacity = "1";
+        document.getElementById("player" + currentPlayerIndexOrder[player] + "Num" + dartScore[score_i]).style.opacity = "1";
       }
     }
   }
@@ -302,7 +318,7 @@ function calculateMPR() {
       MPR80Stuts[player] = MPR100Stuts[player];
       if (toatalClose >= 6) close6Num[player] = 1;
     }
-    document.getElementById("player" + player + "MPR").innerHTML = Number((MPR80Stuts[player]).toFixed(2)) + " (" + Number((MPR100Stuts[player]).toFixed(2)) + ")";
+    document.getElementById("player" + currentPlayerIndexOrder[player] + "MPR").innerHTML = Number((MPR80Stuts[player]).toFixed(2)) + " (" + Number((MPR100Stuts[player]).toFixed(2)) + ")";
   }
 }
 
@@ -349,8 +365,17 @@ function pressFullScreen() {
 }
 
 function changeRound(round) {
-  if (confirm("It will reset the game. Press YES to continiue.")) {
+  if (round != numRound && confirm("It will reset the game. Press YES to continiue.")) {
     numRound = round;
+    initialize();
+  } else {
+    // Do nothing!
+  }
+}
+
+function changePlayer(player) {
+  if (player != numPlayer && confirm("It will reset the game. Press YES to continiue.")) {
+    numPlayer = player;
     initialize();
   } else {
     // Do nothing!

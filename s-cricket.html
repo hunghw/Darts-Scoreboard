@@ -14,11 +14,11 @@
           <p class="MPR" style="font-size: 3vw; text-align: left;  background-color: MidnightBlue;">STANDARD</p>
           <p class="MPR" style="font-size: 3vw; text-align: left;  background-color: MidnightBlue;">CRICKET</p>
           <div  style="width: 50%;">
-            <p class="MPR" id="roundInd" style="font-size: 4vw; text-align: left; background-color: MediumBlue; ">14 / 20</p>
+            <p class="MPR" id="roundInd" style="font-size: 4vw; text-align: center; background-color: MediumBlue; ">14 / 20</p>
           </div>
           <div  style="width: 50%;">
-            <p class="MPR" style="font-size: 2vw; text-align: left; text-align: center">ROUND</p>
-            <p class="MPR" style="font-size: 2vw; text-align: left; text-align: center">SCORE</p>
+            <p class="MPR" style="font-size: 2vw; text-align: center">ROUND</p>
+            <p class="MPR" style="font-size: 2vw; text-align: center">SCORE</p>
           </div>
           <div class="scrollResult">
             <div style="width: 100%; background-color: black;">
@@ -65,10 +65,10 @@
             </div>
           </div>
           <div>
-            <button class="setPlayer">1P</button>
-            <button class="setPlayer">2P</button>
-            <button class="setPlayer">3P</button>
-            <button class="setPlayer">4P</button>
+            <button class="setPlayer" onclick="changePlayer(1)">1P</button>
+            <button class="setPlayer" onclick="changePlayer(2)">2P</button>
+            <button class="setPlayer" onclick="changePlayer(3)">3P</button>
+            <button class="setPlayer" onclick="changePlayer(4)">4P</button>
           </div>
           <div>
             <button class="setRound" onclick="pressFullScreen()">FULL SCREEN</button>
@@ -78,7 +78,7 @@
           </div>
         </div>
         <div style="width: 44%; height: 80%; ">
-          <div class="hitDarts" style="border: 4px MediumSlateBlue  solid; ">
+          <div id="player0Result" class="hitDarts" style="border: 4px MediumSlateBlue  solid; ">
             <img class="hitDarts" id="player0Num20" src="null.png">
             <img class="hitDarts" id="player0Num19" src="null.png">
             <img class="hitDarts" id="player0Num18" src="null.png">
@@ -87,7 +87,7 @@
             <img class="hitDarts" id="player0Num15" src="null.png">
             <img class="hitDarts" id="player0Num25" src="null.png">
           </div>
-          <div class="hitDarts" style="border: 4px blue solid; ">
+          <div id="player1Result" class="hitDarts" style="border: 4px blue solid; ">
             <img class="hitDarts" id="player1Num20" src="null.png">
             <img class="hitDarts" id="player1Num19" src="null.png">
             <img class="hitDarts" id="player1Num18" src="null.png">
@@ -105,7 +105,7 @@
             <button class="score" onclick="hitNum(15)">15</button>
             <button class="score" onclick="hitNum(25)">BULL</button>
           </div>
-          <div class="hitDarts" style="border: 4px gold solid; ">
+          <div id="player2Result" class="hitDarts" style="border: 4px gold solid; ">
             <img class="hitDarts" id="player2Num20" src="null.png">
             <img class="hitDarts" id="player2Num19" src="null.png">
             <img class="hitDarts" id="player2Num18" src="null.png">
@@ -114,7 +114,7 @@
             <img class="hitDarts" id="player2Num15" src="null.png">
             <img class="hitDarts" id="player2Num25" src="null.png">
           </div>
-          <div class="hitDarts" style="border: 4px green solid; ">
+          <div id="player3Result" class="hitDarts" style="border: 4px green solid; ">
             <img class="hitDarts" id="player3Num20" src="null.png">
             <img class="hitDarts" id="player3Num19" src="null.png">
             <img class="hitDarts" id="player3Num18" src="null.png">
@@ -131,14 +131,14 @@
           <div  style="width: 85%;">
             <p class="MPR" style="font-size: 2.5vw; text-align: left; text-align: center">DART & RESULT</p>
           </div>
-          <div style="width: 100%; background-color: black;">
-            <p style="color: white; background-color: black; font-size: 3.5vw; border: 4px DimGray solid; box-sizing: border-box;" id="currentDart0">-</p>
+          <div style="width: 100%;">
+            <p class="dartsCurrent" id="currentDart0">-</p>
           </div>
-          <div style="width: 100%; background-color: black;">
-            <p style="color: white; background-color: black; font-size: 3.5vw; border: 4px DimGray solid; box-sizing: border-box;" id="currentDart1">-</p>
+          <div style="width: 100%;">
+            <p class="dartsCurrent" id="currentDart1">-</p>
           </div>
-          <div style="width: 100%; background-color: black;">
-            <p style="color: white; background-color: black; font-size: 3.5vw; border: 4px DimGray solid; box-sizing: border-box;" id="currentDart2">-</p>
+          <div style="width: 100%;">
+            <p class="dartsCurrent" id="currentDart2">-</p>
           </div>
           <div>
             <button class="setScore" onclick="hitMag(1)">SINGLE</button>
@@ -155,19 +155,19 @@
         </div>
       </div>
       <div style="height: 20%; background-color: black;">
-        <div class="score" style="border-color: MediumSlateBlue  ">
+        <div id="player0ScoreDiv" class="score" style="border-color: MediumSlateBlue  ">
           <p class="score" id="player0Score" >0</p>
           <p class="MPR" id="player0MPR">0 (0)</p>
         </div>
-        <div class="score" style="border-color: blue">
+        <div id="player1ScoreDiv" class="score" style="border-color: blue">
           <p class="score" id="player1Score" >0</p>
           <p class="MPR" id="player1MPR">0 (0)</p>
         </div>
-        <div class="score" style="border-color: gold">
+        <div id="player2ScoreDiv" class="score" style="border-color: gold">
           <p class="score" id="player2Score" >0</p>
           <p class="MPR" id="player2MPR">0 (0)</p>
         </div>
-        <div class="score" style="border-color: green">
+        <div id="player3ScoreDiv" class="score" style="border-color: green">
           <p class="score" id="player3Score" >0</p>
           <p class="MPR" id="player3MPR">0 (0)</p>
         </div>

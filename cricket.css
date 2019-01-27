@@ -128,7 +128,7 @@ button.setPlayer {
   width: 7vw;
   height: 7vw;
   font-weight: bold;
-  color: darkgray;
+  color: white;
   background-color: black;
   border: 1px white solid;
   box-sizing: border-box;
@@ -164,5 +164,13 @@ button.score {
   color: white;
   background-color: black;
   border: none;
+  box-sizing: border-box;
+}
+
+p.dartsCurrent{
+  color: white;
+  background-color: black;
+  font-size: 3.5vw;
+  border: 4px DimGray solid;
   box-sizing: border-box;
 }
