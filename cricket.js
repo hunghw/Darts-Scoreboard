@@ -144,17 +144,35 @@ function pressEnter() {
           currentRoundNum = [0, 0, 0];
           currentRoundMag = [1, 1, 1];
           //clearCurrentDart();
-          var winnerScore = 65535;
           whitenPlayerScore();
-          for (var player = 0; player < numPlayer; ++player) {
-            if (winnerScore > playerScore[player]) {
-              winnerScore = playerScore[player];
-              whitenPlayerScore();
-              document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "yellow";
-            } else if (winnerScore == playerScore[player]) {
-              document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "yellow";
+          if(numPlayer >2){
+            var winnerScore = 65535;
+            for (var player = 0; player < numPlayer; ++player) {
+              if (winnerScore > playerScore[player]) {
+                winnerScore = playerScore[player];
+                whitenPlayerScore();
+                document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "yellow";
+              } else if (winnerScore == playerScore[player]) {
+                document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "yellow";
+              }
+            }
+          }else{
+            var winnerScore = -1;
+            console.log("ELSE");
+            for (var player = 0; player < numPlayer; ++player) {
+              console.log("for", player);
+              if (winnerScore < playerScore[player]) {
+                console.log("for", player, "T");
+                winnerScore = playerScore[player];
+                whitenPlayerScore();
+                document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "yellow";
+              } else if (winnerScore == playerScore[player]) {
+                console.log("for", player, "=");
+                document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "yellow";
+              }
             }
           }
+          
         } else {}
 
         if (currentRoundDartInd < 3) {
@@ -262,18 +280,25 @@ function updatePlayerScore() {
         playerHitTimes[player][score_i] += hitMagRec[player][round][i];
         var maxi = (currentHit > 3) ? currentHit : 3;
         var scoreGain = (playerHitTimes[player][score_i] - maxi) * dartScore[score_i];
-        if (scoreGain > 0) {
+        if ( numPlayer <= 2 && scoreGain > 0){
+          playerScore[player] += scoreGain;
+        }else if (scoreGain > 0){
           for (var otherPlayer = 0; otherPlayer < numPlayer; ++otherPlayer) {
-            if (otherPlayer != player && playerHitTimes[otherPlayer][score_i] < 3) {
+            if (scoreGain > 0 && otherPlayer != player && playerHitTimes[otherPlayer][score_i] < 3) {
               playerScore[otherPlayer] += scoreGain;
 
             }
           }
-        }
+        } 
       }
     }
   }
   hitNumTimes = playerHitTimes;
+  updateDartsResultPic();
+  calculateMPR();
+  document.getElementById("currentPlayer").innerHTML = "P" + (currentPlayer + 1);
+}
+function updateDartsResultPic(){
   var allPlayerClose = [0, 0, 0, 0, 0, 0, 0]; // 20, 19, 18 ... 15,  Bull
   for (var player = 0; player < numPlayer; ++player) {
     document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").innerText = playerScore[player];
@@ -294,10 +319,7 @@ function updatePlayerScore() {
       }
     }
   }
-  calculateMPR();
-  document.getElementById("currentPlayer").innerHTML = "P" + (currentPlayer + 1);
 }
-
 //var MPR80Stuts, MPR100Stuts, close6Num;
 function calculateMPR() {
   for (var player = 0; player < numPlayer; ++player) {
