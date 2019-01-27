@@ -1,5 +1,11 @@
 const dartState = ["Miss", "S", "D", "T"];
 const dartScore = [20, 19, 18, 17, 16, 15, 25];
+const playerIndexOrderInHtml=[
+  [1],
+  [1, 2],
+  [0, 1, 2], 
+  [0, 1, 2, 3]
+];
 var hitTimes = 0;
 var numPlayer = 4,
   numRound = 15;
@@ -8,11 +14,18 @@ var currentRoundNum = [0, 0, 0],
   currentRoundMag = [1, 1, 1],
   currentRoundDartInd = 0,
   currentRoundInd = 0,
-  currentPlayer = 0;
+  currentPlayer = 0,
+  currentPlayerIndexOrder = [0, 1, 2, 3];
 var MPR80Stuts, MPR100Stuts, close6Num;
 
 function initialize() {
-  hitTimes = 0, currentRoundNum = [0, 0, 0], currentRoundMag = [1, 1, 1], currentRoundDartInd = 0, currentRoundInd = 0, currentPlayer = 0;
+  hitTimes = 0;
+  currentRoundNum = [0, 0, 0];
+  currentRoundMag = [1, 1, 1];
+  currentRoundDartInd = 0;
+  currentRoundInd = 0;
+  currentPlayer = 0;
+  currentPlayerIndexOrder = playerIndexOrderInHtml[numPlayer-1];
   hitNumRec = new Array(numPlayer);
   hitMagRec = new Array(numPlayer);
   hitNumTimes = new Array(numPlayer);
@@ -220,6 +233,7 @@ function updatePlayerScore() {
     }
   }
   calculateMPR();
+  document.getElementById("currentPlayer").innerHTML = "P" + (currentPlayer+1);
 }
 
 //var MPR80Stuts, MPR100Stuts, close6Num;
