@@ -9,7 +9,7 @@ const playerIndexOrderInHtml = [
 ];
 var hitTimes = 0;
 var numPlayer = 4,
-  numRound = 1;
+  numRound = 2;
 var hitNumRec, hitMagRec, hitNumTimes, playerScore;
 var currentRoundNum = [0, 0, 0],
   currentRoundMag = [1, 1, 1],
@@ -72,7 +72,10 @@ function hitNum(num) {
 function showCurrentDart(index) {
   var showText = dartState[currentRoundMag[index]];
   var showColor = "white";
-  if (currentRoundNum[index] == 25) {
+  if (currentRoundNum[index] == 25) { // BULL
+    if (currentRoundMag[index] == 1){
+      showText = "";
+    }
     showText += "BULL";
     showColor = "red";
   } else if (currentRoundNum[index] >= 15) {
@@ -222,7 +225,6 @@ function pressDelete() {
   // printlog("pressDelete");
 }
 
-
 function updatePlayerScore() {
   playerHitTimes = new Array(numPlayer);
   for (var player = 0; player < numPlayer; ++player) {
@@ -256,10 +258,24 @@ function updatePlayerScore() {
     }
   }
   hitNumTimes = playerHitTimes;
+  var allPlayerClose = [0, 0, 0, 0, 0, 0, 0]; // 20, 19, 18 ... 15,  Bull
   for (var player = 0; player < numPlayer; ++player) {
     document.getElementById("player" + player + "Score").innerText = playerScore[player];
-    for (var score_i = 0; score_i <= dartScore.length; ++score_i) {
+    for (var score_i = 0; score_i < dartScore.length; ++score_i) {
       updatePicture("player" + player + "Num" + dartScore[score_i], hitNumTimes[player][score_i]);
+      if (hitNumTimes[player][score_i] >= 3){
+        ++allPlayerClose[score_i];
+      }
+    }
+  }
+  for (var score_i = 0; score_i < dartScore.length; ++score_i) {
+    for (var player = 0; player < numPlayer; ++player) {
+      // console.log("player" + player + "Num" + dartScore[score_i]);
+      if(allPlayerClose[score_i] == numPlayer){
+        document.getElementById("player" + player + "Num" + dartScore[score_i]).style.opacity = "0.3";
+      }else{
+        document.getElementById("player" + player + "Num" + dartScore[score_i]).style.opacity = "1";
+      }
     }
   }
   calculateMPR();
