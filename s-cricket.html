@@ -1,305 +1,181 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <link rel="icon" href="favicon.ico" type="image/ico">
     <title>Team Cricket</title>
-    <style>
-        .button {
-          background-color: rgb(0, 0, 0);
-          border: none;
-          color: white;
-          padding: 8px 0px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 24px;
-          margin: 0px 0px;
-          cursor: pointer;
-          }
-          p.score {
-          background-color: rgb(0, 0, 0);
-          border: none;
-          color: white;
-          width: 120px;
-          padding: 0px 0px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 60px;
-          font-weight:bold;
-          margin: 0px 0px;
-          cursor: pointer;
-          }
-          p.MPR {
-          background-color: rgb(0, 0, 0);
-          border: none;
-          color: white;
-          width: 120px;
-          padding: 0px 0px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 24px;
-          margin: 0px 0px;
-          cursor: pointer;
-          }
-          p.currentDarts {
-          background-color: rgb(0, 0, 0);
-          border: none;
-          color: white;
-          /* width: 120px; */
-          padding: 0px 0px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          /* font-size: 60px; */
-          /* font-weight:bold; */
-          margin: 0px 0px;
-          cursor: pointer;
-          }
-    </style>
+    <link rel="stylesheet" href="cricket.css">
     <script src="cricket.js"></script>
-</head>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
 
-<body style="background-color: black" onload="initialize();">
+  </head>
+  <body onload="initialize();">
+    <div id="frame" style="width: 100vw; padding-bottom: 56.25vw; background-color: black">
+      <div style="width: 100%; height: 80%; background-color: black;">
+        <div style="width: 28%; height: 100%; background-color: navy;">
+          <p class="MPR" style="font-size: 3vw; text-align: left;  background-color: MidnightBlue;">STANDARD</p>
+          <p class="MPR" style="font-size: 3vw; text-align: left;  background-color: MidnightBlue;">CRICKET</p>
+          <div  style="width: 50%;">
+            <p class="MPR" id="roundInd" style="font-size: 4vw; text-align: left; background-color: MediumBlue; ">14 / 20</p>
+          </div>
+          <div  style="width: 50%;">
+            <p class="MPR" style="font-size: 2vw; text-align: left; text-align: center">ROUND</p>
+            <p class="MPR" style="font-size: 2vw; text-align: left; text-align: center">SCORE</p>
+          </div>
+          <div class="scrollResult">
+               <div style="width: 100%; background-color: black;">
+                 <p class="round" >R1</p>
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+               </div>
+               <div style="width: 100%; background-color: black;">
+                 <p class="round" >R2</p>
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+               </div>
+               <div style="width: 100%; background-color: black;">
+                 <p class="round" >R15</p>
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+               </div>
+               <div style="width: 100%; background-color: black;">
+                 <p class="round" >R15</p>
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+               </div>
+               <div style="width: 100%; background-color: black;">
+                 <p class="round" >R15</p>
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+               </div>
+               <div style="width: 100%; background-color: black;">
+                 <p class="round" >R15</p>
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+               </div>
+               <div style="width: 100%; background-color: black;">
+                 <p class="round" >R15</p>
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+                 <img class="round" src="triple_w.png">
+               </div>
+          </div>
+          <div>
+               <button class="setting">1P</button>
+               <button class="setting">2P</button>
+               <button class="setting">3P</button>
+               <button class="setting">4P</button>
+          </div>
+          <div>
+               <button class="setting" style="font-size: 1.5vw">FULL SCREEN</button>
+               <button class="setting">R10</button>
+               <button class="setting">R15</button>
+               <button class="setting">R20</button>
+          </div>
 
-    <table border="0" style="border-collapse: collapse;" align="center">
-        <tbody>
-            <tr>
-                <td style="width: 20%; text-align: center;">
-                    <table border="5" style="border-collapse: collapse;" align="center">
-                        <tbody>
-                            <tr>
-                                <td style="width: 100%;">
-                                    <table border="0" style="border-collapse: collapse; width: 100%;">
-                                        <tbody>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player0Num20" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player0Num19" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player0Num18" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player0Num17" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player0Num16" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player0Num15" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player0Num25" src="null.png" height="40px"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <table border="5" style="border-collapse: collapse;" align="center">
-                        <tbody>
-                            <tr>
-                                <td style="width: 100%;">
-                                    <table border="0" style="border-collapse: collapse; width: 100%;">
-                                        <tbody>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player1Num20" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player1Num19" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player1Num18" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player1Num17" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player1Num16" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player1Num15" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player1Num25" src="null.png" height="40px"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <table border="0" style="border-collapse: collapse; width: 100%;">
-                        <tbody>
-                            <tr>
-                                <td><button class="button" style="width: 100%; height: 100%;" onclick=hitNum(20)>20</button></td>
-                            </tr>
-                            <tr>
-                                <td><button class="button" style="width: 100%; height: 100%;" onclick=hitNum(19)>19</button></td>
-                            </tr>
-                            <tr>
-                                <td><button class="button" style="width: 100%; height: 100%;" onclick=hitNum(18)>18</button></td>
-                            </tr>
-                            <tr>
-                                <td><button class="button" style="width: 100%; height: 100%;" onclick=hitNum(17)>17</button></td>
-                            </tr>
-                            <tr>
-                                <td><button class="button" style="width: 100%; height: 100%;" onclick=hitNum(16)>16</button></td>
-                            </tr>
-                            <tr>
-                                <td><button class="button" style="width: 100%; height: 100%;" onclick=hitNum(15)>15</button></td>
-                            </tr>
-                            <tr>
-                                <td><button class="button" style="width: 100%; height: 100%;" onclick=hitNum(25)>Bull</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <table border="5" style="border-collapse: collapse;" align="center">
-                        <tbody>
-                            <tr>
-                                <td style="width: 100%;">
-                                    <table border="0" style="border-collapse: collapse; width: 100%;">
-                                        <tbody>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player2Num20" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player2Num19" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player2Num18" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player2Num17" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player2Num16" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player2Num15" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player2Num25" src="null.png" height="40px"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <table border="5" style="border-collapse: collapse;" align="center">
-                        <tbody>
-                            <tr>
-                                <td style="width: 100%;">
-                                    <table border="0" style="border-collapse: collapse; width: 100%;">
-                                        <tbody>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player3Num20" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player3Num19" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player3Num18" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player3Num17" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player3Num16" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player3Num15" src="null.png" height="40px"></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;"><img id="player3Num25" src="null.png" height="40px"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr style="height: 20px;">
-                <td style="width: 20%; height: 20px;"><button class="button" style="width: 100%; height: 100%;" onclick="hitMag(2)">Double</button></td>
-                <td style="width: 20%; height: 20px;"><button class="button" style="width: 100%; height: 100%;" onclick="hitMag(3)">Triple</button></td>
-                <td style="width: 20%; height: 20px;"><button class="button" style="width: 100%; height: 100%;" onclick="pressEnter()">Enter</button></td>
-                <td style="width: 20%; height: 20px;"><button class="button" style="width: 100%; height: 100%;" onclick="hitMiss()">Miss</button></td>
-                <td style="width: 20%; height: 20px;"><button class="button" style="width: 100%; height: 100%;" onclick="pressDelete()">Delete</button></td>
-            </tr>
+        </div>
+        <div style="width: 44%; height: 80%; ">
+            <div class="hitDarts" style="border: 4px red solid; ">
+                  <img class="hitDarts" id="player0Num20" src="null.png">
+                  <img class="hitDarts" id="player0Num19" src="null.png">
+                  <img class="hitDarts" id="player0Num18" src="null.png">
+                  <img class="hitDarts" id="player0Num17" src="null.png">
+                  <img class="hitDarts" id="player0Num16" src="null.png">
+                  <img class="hitDarts" id="player0Num15" src="null.png">
+                  <img class="hitDarts" id="player0Num25" src="null.png">
+            </div>
+            <div class="hitDarts" style="border: 4px blue solid; ">
+                  <img class="hitDarts" id="player1Num20" src="null.png">
+                  <img class="hitDarts" id="player1Num19" src="null.png">
+                  <img class="hitDarts" id="player1Num18" src="null.png">
+                  <img class="hitDarts" id="player1Num17" src="null.png">
+                  <img class="hitDarts" id="player1Num16" src="null.png">
+                  <img class="hitDarts" id="player1Num15" src="null.png">
+                  <img class="hitDarts" id="player1Num25" src="null.png">
+            </div>
+            <div style="width: 12vw; float: left;  border: 4px black solid; box-sizing: border-box;"> 
+                  <button class="score" onclick="hitNum(20)">20</button>
+                  <button class="score" onclick="hitNum(19)">19</button>
+                  <button class="score" onclick="hitNum(18)">18</button>
+                  <button class="score" onclick="hitNum(17)">17</button>
+                  <button class="score" onclick="hitNum(16)">16</button>
+                  <button class="score" onclick="hitNum(15)">15</button>
+                  <button class="score" onclick="hitNum(25)">BULL</button>
+            </div>
+            <div class="hitDarts" style="border: 4px gold solid; ">
+                  <img class="hitDarts" id="player2Num20" src="null.png">
+                  <img class="hitDarts" id="player2Num19" src="null.png">
+                  <img class="hitDarts" id="player2Num18" src="null.png">
+                  <img class="hitDarts" id="player2Num17" src="null.png">
+                  <img class="hitDarts" id="player2Num16" src="null.png">
+                  <img class="hitDarts" id="player2Num15" src="null.png">
+                  <img class="hitDarts" id="player2Num25" src="null.png">
+            </div>
+            <div class="hitDarts" style="border: 4px green solid; ">
+                  <img class="hitDarts" id="player3Num20" src="null.png">
+                  <img class="hitDarts" id="player3Num19" src="null.png">
+                  <img class="hitDarts" id="player3Num18" src="null.png">
+                  <img class="hitDarts" id="player3Num17" src="null.png">
+                  <img class="hitDarts" id="player3Num16" src="null.png">
+                  <img class="hitDarts" id="player3Num15" src="null.png">
+                  <img class="hitDarts" id="player3Num25" src="null.png">
+            </div>
+        </div>
+        <div style="width: 28%; height: 80%; background-color: red;">
+            <div  style="width: 15%;">
+                  <p class="MPR" style="font-size: 3vw; text-align: left; background-color: MediumBlue; ">P4</p>
+                </div>
+                <div  style="width: 85%;">
+                  <p class="MPR" style="font-size: 2.5vw; text-align: left; text-align: center">DART & RESULT</p>
+                </div>
+                <div style="width: 100%; background-color: black;">
+                     <p style="color: white; background-color: black; font-size: 4vw; border: 4px white solid; box-sizing: border-box;" id="currentDart0">SINGLE 18</p>
+                   </div>
+                   <div style="width: 100%; background-color: black;">
+                        <p style="color: white; background-color: black; font-size: 4vw; border: 4px white solid; box-sizing: border-box;" id="currentDart1">SINGLE 18</p>
+                      </div>
+                      <div style="width: 100%; background-color: black;">
+                           <p style="color: white; background-color: black; font-size: 4vw; border: 4px white solid; box-sizing: border-box;" id="currentDart2">SINGLE 18</p>
+                         </div>
+                         <div>
+                              <button class="setScore" onclick="hitMag(1)">SINGLE</button>
+                              <button class="setScore" onclick="hitMag(2)">DOUBLE</button>
+                              <button class="setScore" onclick="hitMag(3)">TRIPLE</button>
+                              <button class="setScore" onclick="hitMiss()">MISS</button>
+                         </div>
+                         <div>
+                              
+                              <button class="setScore" onclick="pressEnter()">ENTER</button>
+                              <button class="setScore" onclick="pressDelete()">DELETE</button>
+                              <button class="setScore">RESET</button>
+                              <button class="setScore">??</button>
+                         </div>
 
-            <tr style="height: 20px;">
-                <td style="text-align: center;">
-                    <button class="button" style="width: 100%; height: 100%;" onclick="hitMag(1)">Single</button>
-                </td>
-                <td style="text-align: center;">
-                    <p class="currentDarts" id="currentDart0"></p>
-                </td>
-                <td style="text-align: center;">
-                    <p class="currentDarts" id="currentDart1"></p>
-                </td>
-                <td style="text-align: center;">
-                    <p class="currentDarts" id="currentDart2"></p>
-                </td>
-                <td style="text-align: center;">
-                    <button class="button" style="width: 100%; height: 100%;" onclick="pressReset()">Reset</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td style="width: 20%; text-align: center;">
-                    <p id="player0Score" class="score">0</p>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <p id="player1Score" class="score">0</p>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <p id="roundInd" class="score" style="font-size: 30px;">Round 1</p>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <p id="player2Score" class="score">0</p>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <p id="player3Score" class="score">0</p>
-                </td>
-            </tr>
-
-            <tr>
-                <td style="width: 20%; text-align: center;">
-                    <p id="player0MPR" class="MPR">0 (0)</p>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <p id="player1MPR" class="MPR">0 (0)</p>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <p id="roundInd" class="score" style="font-size: 30px;"></p>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <p id="player2MPR" class="MPR">0 (0)</p>
-                </td>
-                <td style="width: 20%; text-align: center;">
-                    <p id="player3MPR" class="MPR">0 (0)</p>
-                </td>
-            </tr>
-        </tbody>
-    </table>>
-</body>
-
+        </div>
+      </div>
+      <div style="height: 20%; background-color: black;">
+        <div class="score" style="border-color: red">
+          <p class="score" id="player0Score" >0</p>
+          <p class="MPR" id="player0MPR">0 (0)</p>
+        </div>
+        <div class="score" style="border-color: blue">
+          <p class="score" id="player1Score" >0</p>
+          <p class="MPR" id="player1MPR">0 (0)</p>
+        </div>
+        <div class="score" style="border-color: gold">
+          <p class="score" id="player2Score" >0</p>
+          <p class="MPR" id="player2MPR">0 (0)</p>
+        </div>
+        <div class="score" style="border-color: green">
+          <p class="score" id="player3Score" >0</p>
+          <p class="MPR" id="player3MPR">0 (0)</p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -37,7 +37,7 @@ function initialize() {
     }
     document.getElementById("player" + player + "Score").innerText = 0;
   }
-  document.getElementById("roundInd").innerText = "Round 1/" + numRound;
+  document.getElementById("roundInd").innerText = "1 / " + numRound;
   clearCurrentDart();
   whitenPlayerScore();
   document.getElementById("player0Score").style.backgroundColor = "red";
@@ -131,9 +131,9 @@ function pressEnter() {
 }
 
 function clearCurrentDart() {
-  document.getElementById("currentDart" + 0).innerText = "";
-  document.getElementById("currentDart" + 1).innerText = "";
-  document.getElementById("currentDart" + 2).innerText = "";
+  document.getElementById("currentDart" + 0).innerText = "-";
+  document.getElementById("currentDart" + 1).innerText = "-";
+  document.getElementById("currentDart" + 2).innerText = "-";
 }
 
 function whitenPlayerScore() {
