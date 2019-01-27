@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="cricket.css">
     <script src="cricket.js"></script>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
-
   </head>
   <body onload="initialize();">
     <div id="frame" style="width: 100vw; padding-bottom: 56.25vw; background-color: black">
@@ -22,139 +21,137 @@
             <p class="MPR" style="font-size: 2vw; text-align: left; text-align: center">SCORE</p>
           </div>
           <div class="scrollResult">
-               <div style="width: 100%; background-color: black;">
-                 <p class="round" >R1</p>
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-               </div>
-               <div style="width: 100%; background-color: black;">
-                 <p class="round" >R2</p>
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-               </div>
-               <div style="width: 100%; background-color: black;">
-                 <p class="round" >R15</p>
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-               </div>
-               <div style="width: 100%; background-color: black;">
-                 <p class="round" >R15</p>
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-               </div>
-               <div style="width: 100%; background-color: black;">
-                 <p class="round" >R15</p>
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-               </div>
-               <div style="width: 100%; background-color: black;">
-                 <p class="round" >R15</p>
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-               </div>
-               <div style="width: 100%; background-color: black;">
-                 <p class="round" >R15</p>
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-                 <img class="round" src="triple_w.png">
-               </div>
+            <div style="width: 100%; background-color: black;">
+              <p class="round" >R1</p>
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+            </div>
+            <div style="width: 100%; background-color: black;">
+              <p class="round" >R2</p>
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+            </div>
+            <div style="width: 100%; background-color: black;">
+              <p class="round" >R15</p>
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+            </div>
+            <div style="width: 100%; background-color: black;">
+              <p class="round" >R15</p>
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+            </div>
+            <div style="width: 100%; background-color: black;">
+              <p class="round" >R15</p>
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+            </div>
+            <div style="width: 100%; background-color: black;">
+              <p class="round" >R15</p>
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+            </div>
+            <div style="width: 100%; background-color: black;">
+              <p class="round" >R15</p>
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+              <img class="round" src="triple_w.png">
+            </div>
           </div>
           <div>
-               <button class="setPlayer">1P</button>
-               <button class="setPlayer">2P</button>
-               <button class="setPlayer">3P</button>
-               <button class="setPlayer">4P</button>
+            <button class="setPlayer">1P</button>
+            <button class="setPlayer">2P</button>
+            <button class="setPlayer">3P</button>
+            <button class="setPlayer">4P</button>
           </div>
           <div>
-                <button class="setRound" onclick="pressFullScreen()">FULL SCREEN</button>
-                <button class="setRound" onclick="changeRound(10)">Round 10</button>
-                <button class="setRound" onclick="changeRound(15)">Round 15</button>
-                <button class="setRound" onclick="changeRound(20)">Round 20</button>
+            <button class="setRound" onclick="pressFullScreen()">FULL SCREEN</button>
+            <button class="setRound" onclick="changeRound(10)">Round 10</button>
+            <button class="setRound" onclick="changeRound(15)">Round 15</button>
+            <button class="setRound" onclick="changeRound(20)">Round 20</button>
           </div>
-
         </div>
         <div style="width: 44%; height: 80%; ">
-            <div class="hitDarts" style="border: 4px MediumSlateBlue  solid; ">
-                  <img class="hitDarts" id="player0Num20" src="null.png">
-                  <img class="hitDarts" id="player0Num19" src="null.png">
-                  <img class="hitDarts" id="player0Num18" src="null.png">
-                  <img class="hitDarts" id="player0Num17" src="null.png">
-                  <img class="hitDarts" id="player0Num16" src="null.png">
-                  <img class="hitDarts" id="player0Num15" src="null.png">
-                  <img class="hitDarts" id="player0Num25" src="null.png">
-            </div>
-            <div class="hitDarts" style="border: 4px blue solid; ">
-                  <img class="hitDarts" id="player1Num20" src="null.png">
-                  <img class="hitDarts" id="player1Num19" src="null.png">
-                  <img class="hitDarts" id="player1Num18" src="null.png">
-                  <img class="hitDarts" id="player1Num17" src="null.png">
-                  <img class="hitDarts" id="player1Num16" src="null.png">
-                  <img class="hitDarts" id="player1Num15" src="null.png">
-                  <img class="hitDarts" id="player1Num25" src="null.png">
-            </div>
-            <div style="width: 12vw; float: left;  border: 4px black solid; box-sizing: border-box;"> 
-                  <button class="score" onclick="hitNum(20)">20</button>
-                  <button class="score" onclick="hitNum(19)">19</button>
-                  <button class="score" onclick="hitNum(18)">18</button>
-                  <button class="score" onclick="hitNum(17)">17</button>
-                  <button class="score" onclick="hitNum(16)">16</button>
-                  <button class="score" onclick="hitNum(15)">15</button>
-                  <button class="score" onclick="hitNum(25)">BULL</button>
-            </div>
-            <div class="hitDarts" style="border: 4px gold solid; ">
-                  <img class="hitDarts" id="player2Num20" src="null.png">
-                  <img class="hitDarts" id="player2Num19" src="null.png">
-                  <img class="hitDarts" id="player2Num18" src="null.png">
-                  <img class="hitDarts" id="player2Num17" src="null.png">
-                  <img class="hitDarts" id="player2Num16" src="null.png">
-                  <img class="hitDarts" id="player2Num15" src="null.png">
-                  <img class="hitDarts" id="player2Num25" src="null.png">
-            </div>
-            <div class="hitDarts" style="border: 4px green solid; ">
-                  <img class="hitDarts" id="player3Num20" src="null.png">
-                  <img class="hitDarts" id="player3Num19" src="null.png">
-                  <img class="hitDarts" id="player3Num18" src="null.png">
-                  <img class="hitDarts" id="player3Num17" src="null.png">
-                  <img class="hitDarts" id="player3Num16" src="null.png">
-                  <img class="hitDarts" id="player3Num15" src="null.png">
-                  <img class="hitDarts" id="player3Num25" src="null.png">
-            </div>
+          <div class="hitDarts" style="border: 4px MediumSlateBlue  solid; ">
+            <img class="hitDarts" id="player0Num20" src="null.png">
+            <img class="hitDarts" id="player0Num19" src="null.png">
+            <img class="hitDarts" id="player0Num18" src="null.png">
+            <img class="hitDarts" id="player0Num17" src="null.png">
+            <img class="hitDarts" id="player0Num16" src="null.png">
+            <img class="hitDarts" id="player0Num15" src="null.png">
+            <img class="hitDarts" id="player0Num25" src="null.png">
+          </div>
+          <div class="hitDarts" style="border: 4px blue solid; ">
+            <img class="hitDarts" id="player1Num20" src="null.png">
+            <img class="hitDarts" id="player1Num19" src="null.png">
+            <img class="hitDarts" id="player1Num18" src="null.png">
+            <img class="hitDarts" id="player1Num17" src="null.png">
+            <img class="hitDarts" id="player1Num16" src="null.png">
+            <img class="hitDarts" id="player1Num15" src="null.png">
+            <img class="hitDarts" id="player1Num25" src="null.png">
+          </div>
+          <div style="width: 12vw; float: left;  border: 4px black solid; box-sizing: border-box;"> 
+            <button class="score" onclick="hitNum(20)">20</button>
+            <button class="score" onclick="hitNum(19)">19</button>
+            <button class="score" onclick="hitNum(18)">18</button>
+            <button class="score" onclick="hitNum(17)">17</button>
+            <button class="score" onclick="hitNum(16)">16</button>
+            <button class="score" onclick="hitNum(15)">15</button>
+            <button class="score" onclick="hitNum(25)">BULL</button>
+          </div>
+          <div class="hitDarts" style="border: 4px gold solid; ">
+            <img class="hitDarts" id="player2Num20" src="null.png">
+            <img class="hitDarts" id="player2Num19" src="null.png">
+            <img class="hitDarts" id="player2Num18" src="null.png">
+            <img class="hitDarts" id="player2Num17" src="null.png">
+            <img class="hitDarts" id="player2Num16" src="null.png">
+            <img class="hitDarts" id="player2Num15" src="null.png">
+            <img class="hitDarts" id="player2Num25" src="null.png">
+          </div>
+          <div class="hitDarts" style="border: 4px green solid; ">
+            <img class="hitDarts" id="player3Num20" src="null.png">
+            <img class="hitDarts" id="player3Num19" src="null.png">
+            <img class="hitDarts" id="player3Num18" src="null.png">
+            <img class="hitDarts" id="player3Num17" src="null.png">
+            <img class="hitDarts" id="player3Num16" src="null.png">
+            <img class="hitDarts" id="player3Num15" src="null.png">
+            <img class="hitDarts" id="player3Num25" src="null.png">
+          </div>
         </div>
         <div style="width: 28%; height: 80%; background-color: Darkred;">
-            <div  style="width: 15%;">
-                  <p id="currentPlayer" class="MPR" style="font-size: 3vw; text-align: left; background-color: MediumBlue; padding: 0px 8px">P1</p>
-                </div>
-                <div  style="width: 85%;">
-                  <p class="MPR" style="font-size: 2.5vw; text-align: left; text-align: center">DART & RESULT</p>
-                </div>
-                <div style="width: 100%; background-color: black;">
-                     <p style="color: white; background-color: black; font-size: 3.5vw; border: 4px DimGray solid; box-sizing: border-box;" id="currentDart0">-</p>
-                   </div>
-                   <div style="width: 100%; background-color: black;">
-                        <p style="color: white; background-color: black; font-size: 3.5vw; border: 4px DimGray solid; box-sizing: border-box;" id="currentDart1">-</p>
-                      </div>
-                      <div style="width: 100%; background-color: black;">
-                           <p style="color: white; background-color: black; font-size: 3.5vw; border: 4px DimGray solid; box-sizing: border-box;" id="currentDart2">-</p>
-                         </div>
-                         <div>
-                              <button class="setScore" onclick="hitMag(1)">SINGLE</button>
-                              <button class="setScore" onclick="hitMag(2)">DOUBLE</button>
-                              <button class="setScore" onclick="hitMag(3)">TRIPLE</button>
-                              <button class="setScore" onclick="hitMiss()">MISS</button>
-                         </div>
-                         <div>
-                              <button class="setScore"></button>
-                              <button class="setScore" onclick="pressReset()">RESET</button>
-                              <button class="setScore" onclick="pressDelete()">DELETE</button>
-                              <button id="btnEnter" class="setScore" onclick="pressEnter()">ENTER</button>
-                         </div>
-
+          <div  style="width: 15%;">
+            <p id="currentPlayer" class="MPR" style="font-size: 3vw; text-align: left; background-color: MediumBlue; padding: 0px 8px">P1</p>
+          </div>
+          <div  style="width: 85%;">
+            <p class="MPR" style="font-size: 2.5vw; text-align: left; text-align: center">DART & RESULT</p>
+          </div>
+          <div style="width: 100%; background-color: black;">
+            <p style="color: white; background-color: black; font-size: 3.5vw; border: 4px DimGray solid; box-sizing: border-box;" id="currentDart0">-</p>
+          </div>
+          <div style="width: 100%; background-color: black;">
+            <p style="color: white; background-color: black; font-size: 3.5vw; border: 4px DimGray solid; box-sizing: border-box;" id="currentDart1">-</p>
+          </div>
+          <div style="width: 100%; background-color: black;">
+            <p style="color: white; background-color: black; font-size: 3.5vw; border: 4px DimGray solid; box-sizing: border-box;" id="currentDart2">-</p>
+          </div>
+          <div>
+            <button class="setScore" onclick="hitMag(1)">SINGLE</button>
+            <button class="setScore" onclick="hitMag(2)">DOUBLE</button>
+            <button class="setScore" onclick="hitMag(3)">TRIPLE</button>
+            <button class="setScore" onclick="hitMiss()">MISS</button>
+          </div>
+          <div>
+            <button class="setScore"></button>
+            <button class="setScore" onclick="pressReset()">RESET</button>
+            <button class="setScore" onclick="pressDelete()">DELETE</button>
+            <button id="btnEnter" class="setScore" onclick="pressEnter()">ENTER</button>
+          </div>
         </div>
       </div>
       <div style="height: 20%; background-color: black;">

@@ -1,165 +1,168 @@
 * {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    text-decoration: none;
-    width: 100%;
-    float:left;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  float: left;
 }
-
 
 .button {
-    background-color: rgb(0, 0, 0);
-    border: none;
-    color: white;
-    padding: 8px 0px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 24px;
-    margin: 0px 0px;
-    cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  border: none;
+  color: white;
+  padding: 8px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 0px 0px;
+  cursor: pointer;
 }
 
-.p{
-    background-color: rgb(0, 0, 0);
-    border: none;
-    width: 100%;
-    display: inline-block;
-    cursor: pointer;
+.p {
+  background-color: rgb(0, 0, 0);
+  border: none;
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
 }
+
 p.score {
-    color: white;
-    height: 60%;
-    font-size: 9vh;
-    font-weight: bold;
+  color: white;
+  height: 60%;
+  font-size: 9vh;
+  font-weight: bold;
 }
 
 p.MPR {
-    color: white;
-    height: 40%;
-    font-size: 3vw;
+  color: white;
+  height: 40%;
+  font-size: 3vw;
 }
 
 div.score {
-    float:left; 
-    width: 25%; 
-    height: 100%; 
-    border:4px white solid; 
-    box-sizing: border-box;
+  float: left;
+  width: 25%;
+  height: 100%;
+  border: 4px white solid;
+  box-sizing: border-box;
 }
 
 p.currentDarts {
-    background-color: rgb(0, 0, 0);
-    border: none;
-    color: white;
-    /* width: 120px; */
-    padding: 0px 0px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    /* font-size: 60px; */
-    /* font-weight:bold; */
-    margin: 0px 0px;
-    cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  border: none;
+  color: white;
+  /* width: 120px; */
+  padding: 0px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 60px; */
+  /* font-weight:bold; */
+  margin: 0px 0px;
+  cursor: pointer;
 }
 
 td.img {
-    background-color: rgb(0, 0, 0);
-    border: none;
-    color: white;
-    /* width: 120px; */
-    padding: 0px 0px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    /* font-size: 60px; */
-    /* font-weight:bold; */
-    margin: 0px 0px;
-    cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  border: none;
+  color: white;
+  /* width: 120px; */
+  padding: 0px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 60px; */
+  /* font-weight:bold; */
+  margin: 0px 0px;
+  cursor: pointer;
 }
 
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 .outlined {
-    border: 3px solid blue;
+  border: 3px solid blue;
 }
 
 div.scrollResult {
-    background-color: #333;
-    white-space: nowrap;
-    width: 100%;
-    height: 17vw;
-    overflow-y: scroll;
-}
-p.round{
-    background-color: white; 
-    color: black;
-    font-size: 5vw;
-    float: left;
-    width: 34%;
-    text-align: left;
+  background-color: #333;
+  white-space: nowrap;
+  width: 100%;
+  height: 17vw;
+  overflow-y: scroll;
 }
 
-img.round{
-    width: 18%; 
-    padding: 1% 2%; 
-    float: right;
-}
-img.hitDarts{
-    width: 4vw; 
-    height: 4vw; 
-    padding: 1vw 2vw;
+p.round {
+  background-color: white;
+  color: black;
+  font-size: 5vw;
+  float: left;
+  width: 34%;
+  text-align: left;
 }
 
-div.hitDarts{
-    width: 8vw; 
-    float: left; 
-    border: 4px red solid; 
-    box-sizing: border-box;
+img.round {
+  width: 18%;
+  padding: 1% 2%;
+  float: right;
 }
 
-button.setPlayer{
-    font-size: 3vw;
-    width: 7vw; 
-    height: 7vw;
-    font-weight: bold;
-    color: darkgray;
-    background-color: black;
-    border: 1px white solid; 
-    box-sizing: border-box;
+img.hitDarts {
+  width: 4vw;
+  height: 4vw;
+  padding: 1vw 2vw;
 }
 
-button.setRound{
-    font-size: 1.6vw;
-    width: 7vw; 
-    height: 7vw;
-    font-weight: bold;
-    color: white;
-    background-color: black;
-    border: 1px white solid; 
-    box-sizing: border-box;
+div.hitDarts {
+  width: 8vw;
+  float: left;
+  border: 4px red solid;
+  box-sizing: border-box;
 }
 
-button.setScore{
-    font-size: 1.5vw;
-    width: 7vw; 
-    height: 7vw;
-    font-weight: bold;
-    color: white;
-    background-color: black;
-    border: 1px white solid; 
-    box-sizing: border-box;
+button.setPlayer {
+  font-size: 3vw;
+  width: 7vw;
+  height: 7vw;
+  font-weight: bold;
+  color: darkgray;
+  background-color: black;
+  border: 1px white solid;
+  box-sizing: border-box;
 }
-button.score{
-    font-size: 4vw;
-    width: 12vw; 
-    height: 6vw;
-    font-weight: bold;
-    color: white;
-    background-color: black;
-    border: none; 
-    box-sizing: border-box;
+
+button.setRound {
+  font-size: 1.6vw;
+  width: 7vw;
+  height: 7vw;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  border: 1px white solid;
+  box-sizing: border-box;
+}
+
+button.setScore {
+  font-size: 1.5vw;
+  width: 7vw;
+  height: 7vw;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  border: 1px white solid;
+  box-sizing: border-box;
+}
+
+button.score {
+  font-size: 4vw;
+  width: 12vw;
+  height: 6vw;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  border: none;
+  box-sizing: border-box;
 }

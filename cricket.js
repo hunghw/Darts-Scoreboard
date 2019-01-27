@@ -1,10 +1,10 @@
 const dartState = ["MISS", "SINGLE ", "DOUBLE ", "TRIPLE "];
 
 const dartScore = [20, 19, 18, 17, 16, 15, 25];
-const playerIndexOrderInHtml=[
+const playerIndexOrderInHtml = [
   [1],
   [1, 2],
-  [0, 1, 2], 
+  [0, 1, 2],
   [0, 1, 2, 3]
 ];
 var hitTimes = 0;
@@ -26,7 +26,7 @@ function initialize() {
   currentRoundDartInd = 0;
   currentRoundInd = 0;
   currentPlayer = 0;
-  currentPlayerIndexOrder = playerIndexOrderInHtml[numPlayer-1];
+  currentPlayerIndexOrder = playerIndexOrderInHtml[numPlayer - 1];
   hitNumRec = new Array(numPlayer);
   hitMagRec = new Array(numPlayer);
   hitNumTimes = new Array(numPlayer);
@@ -55,7 +55,7 @@ function initialize() {
   clearCurrentDart();
   whitenPlayerScore();
   document.getElementById("player0Score").style.backgroundColor = "red";
-  document.getElementById("btnEnter").style.color="white";
+  document.getElementById("btnEnter").style.color = "white";
 }
 
 function hitNum(num) {
@@ -64,8 +64,8 @@ function hitNum(num) {
     showCurrentDart(currentRoundDartInd);
     ++currentRoundDartInd;
   }
-  if (currentRoundDartInd == 3){
-    document.getElementById("btnEnter").style.color="red";
+  if (currentRoundDartInd == 3) {
+    document.getElementById("btnEnter").style.color = "red";
   }
 }
 
@@ -75,11 +75,11 @@ function showCurrentDart(index) {
   if (currentRoundNum[index] == 25) {
     showText += "BULL";
     showColor = "red";
-  } else if (currentRoundNum[index] >= 15){
+  } else if (currentRoundNum[index] >= 15) {
     showText += currentRoundNum[index];
-    if (currentRoundMag[index] == 3){
+    if (currentRoundMag[index] == 3) {
       showColor = "Lime";
-    }else if (currentRoundMag[index] == 2){
+    } else if (currentRoundMag[index] == 2) {
       showColor = "Cyan";
     }
   }
@@ -95,9 +95,9 @@ function hitMiss() {
     document.getElementById("currentDart" + currentRoundDartInd).innerText = "MISS";
     ++currentRoundDartInd;
   }
-  
-  if (currentRoundDartInd == 3){
-    document.getElementById("btnEnter").style.color="red";
+
+  if (currentRoundDartInd == 3) {
+    document.getElementById("btnEnter").style.color = "red";
   }
   // printlog("hitMiss");
 }
@@ -145,9 +145,9 @@ function pressEnter() {
             }
           }
         } else {}
-        
-        if (currentRoundDartInd < 3){
-          document.getElementById("btnEnter").style.color="white";
+
+        if (currentRoundDartInd < 3) {
+          document.getElementById("btnEnter").style.color = "white";
         }
         return;
       }
@@ -161,15 +161,15 @@ function pressEnter() {
     document.getElementById("player" + currentPlayer + "Score").style.backgroundColor = "red";
 
   }
-  
-  if (currentRoundDartInd < 3){
-    document.getElementById("btnEnter").style.color="white";
+
+  if (currentRoundDartInd < 3) {
+    document.getElementById("btnEnter").style.color = "white";
   }
   // printlog("pressEnter");
 }
 
 function clearCurrentDart() {
-  for (var i = 0; i < 3; ++i){
+  for (var i = 0; i < 3; ++i) {
     document.getElementById("currentDart" + i).innerText = "-";
     document.getElementById("currentDart" + i).style.color = "white";
   }
@@ -216,8 +216,8 @@ function pressDelete() {
     showCurrentDart(1);
     updatePlayerScore();
   }
-  if (currentRoundDartInd < 3){
-    document.getElementById("btnEnter").style.color="white";
+  if (currentRoundDartInd < 3) {
+    document.getElementById("btnEnter").style.color = "white";
   }
   // printlog("pressDelete");
 }
@@ -263,7 +263,7 @@ function updatePlayerScore() {
     }
   }
   calculateMPR();
-  document.getElementById("currentPlayer").innerHTML = "P" + (currentPlayer+1);
+  document.getElementById("currentPlayer").innerHTML = "P" + (currentPlayer + 1);
 }
 
 //var MPR80Stuts, MPR100Stuts, close6Num;
@@ -318,8 +318,9 @@ function updatePicture(id, hitTimes) {
     document.getElementById(id).src = "triple_w.png";
   }
 }
-function pressFullScreen(){
-  var elem = document.documentElement; 
+
+function pressFullScreen() {
+  var elem = document.documentElement;
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   } else if (elem.mozRequestFullScreen) { /* Firefox */
@@ -330,7 +331,8 @@ function pressFullScreen(){
     elem.msRequestFullscreen();
   }
 }
-function changeRound(round){
+
+function changeRound(round) {
   if (confirm("It will reset the game. Press YES to continiue.")) {
     numRound = round;
     initialize();
