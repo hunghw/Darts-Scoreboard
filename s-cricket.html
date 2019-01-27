@@ -66,16 +66,16 @@
                </div>
           </div>
           <div>
-               <button class="setting">1P</button>
-               <button class="setting">2P</button>
-               <button class="setting">3P</button>
-               <button class="setting">4P</button>
+               <button class="setPlayer">1P</button>
+               <button class="setPlayer">2P</button>
+               <button class="setPlayer">3P</button>
+               <button class="setPlayer">4P</button>
           </div>
           <div>
-               <button class="setting" style="font-size: 1.5vw" onclick="hitFullScreen()">FULL SCREEN</button>
-               <button class="setting">R10</button>
-               <button class="setting">R15</button>
-               <button class="setting">R20</button>
+                <button class="setRound" onclick="pressFullScreen()">FULL SCREEN</button>
+                <button class="setRound" onclick="changeRound(10)">Round 10</button>
+                <button class="setRound" onclick="changeRound(15)">Round 15</button>
+                <button class="setRound" onclick="changeRound(20)">Round 20</button>
           </div>
 
         </div>
@@ -152,7 +152,7 @@
                               
                               <button class="setScore" onclick="pressEnter()">ENTER</button>
                               <button class="setScore" onclick="pressDelete()">DELETE</button>
-                              <button class="setScore">RESET</button>
+                              <button class="setScore" onclick="pressReset()">RESET</button>
                               <button class="setScore">??</button>
                          </div>
 

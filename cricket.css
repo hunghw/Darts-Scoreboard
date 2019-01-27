@@ -121,8 +121,19 @@ div.hitDarts{
     box-sizing: border-box;
 }
 
-button.setting{
+button.setPlayer{
     font-size: 3vw;
+    width: 7vw; 
+    height: 7vw;
+    font-weight: bold;
+    color: darkgray;
+    background-color: black;
+    border: 1px white solid; 
+    box-sizing: border-box;
+}
+
+button.setRound{
+    font-size: 1.6vw;
     width: 7vw; 
     height: 7vw;
     font-weight: bold;

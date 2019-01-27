@@ -274,7 +274,7 @@ function updatePicture(id, hitTimes) {
     document.getElementById(id).src = "triple_w.png";
   }
 }
-function hitFullScreen(){
+function pressFullScreen(){
   var elem = document.documentElement; 
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
@@ -284,5 +284,13 @@ function hitFullScreen(){
     elem.webkitRequestFullscreen();
   } else if (elem.msRequestFullscreen) { /* IE/Edge */
     elem.msRequestFullscreen();
+  }
+}
+function changeRound(round){
+  if (confirm("It will reset the game. Press YES to continiue.")) {
+    numRound = round;
+    initialize();
+  } else {
+    // Do nothing!
   }
 }
