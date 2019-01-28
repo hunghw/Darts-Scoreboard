@@ -421,6 +421,14 @@ function claerHitHistory(){
   for( var i = parent.childElementCount; i > 0; --i){
     parent.removeChild(parent.lastElementChild);
   }
+  if (currentPlayer == 0 && currentRoundInd == 0){
+    var DIV = document.createElement("DIV");
+    var P = document.createElement("P");
+    P.className = "round";
+    P.innerHTML = 'R' + (currentRoundInd + 1);
+    DIV.appendChild(P);
+    parent.appendChild(DIV);
+  }
 }
 // const todoList = document.querySelector('histroyResult');
 function updateHitDartsHistory(){
