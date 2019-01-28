@@ -176,13 +176,13 @@ p.dartsCurrent{
   box-sizing: border-box;
   float: right;
   width: 70%;
-  height: 6vw;
+  height: 5.5vw;
 }
 
 button.dartsCurrent{
-  font-size: 1vw;
+  font-size: 1.8vw;
   width: 30%;
-  height: 6vw;
+  height: 5.5vw;
   float:left;
   font-weight: bold;
   color: white;

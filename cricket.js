@@ -84,9 +84,12 @@ function showCurrentDart(index) {
   var showColor = "white";
   if (currentRoundNum[index] == 25) { // BULL
     if (currentRoundMag[index] == 1){
-      showText = "";
+      showText = "BULL";
+    }else if (currentRoundMag[index] == 2){
+      showText = "D-BULL";
+    }else if (currentRoundMag[index] == 3){
+      showText = "T-BULL";
     }
-    showText += "BULL";
     showColor = "red";
   } else if (currentRoundNum[index] >= 15) {
     showText += currentRoundNum[index];
