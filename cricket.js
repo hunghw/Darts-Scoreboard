@@ -10,7 +10,7 @@ const PLAYERINDEXORDERINHTML = [
 ];
 var hitTimes = 0;
 var numPlayer = 4,
-  numRound = 2;
+  numRound = 15;
 var hitNumRec, hitMagRec, hitNumTimes, playerScore;
 var currentRoundNum = [0, 0, 0],
   currentRoundMag = [1, 1, 1],
