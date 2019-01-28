@@ -463,4 +463,5 @@ function updateHitDartsHistory(){
     DIV.appendChild(P);
     parent.appendChild(DIV);
   }
+  parent.scrollTop = parent.scrollHeight;
 }
