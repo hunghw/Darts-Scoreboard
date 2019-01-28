@@ -146,9 +146,10 @@ button.setRound {
 }
 
 button.setScore {
-  font-size: 1.5vw;
-  width: 7vw;
+  font-size: 3vw;
+  width: 50%;
   height: 7vw;
+  float:left;
   font-weight: bold;
   color: white;
   background-color: black;
@@ -172,5 +173,20 @@ p.dartsCurrent{
   background-color: black;
   font-size: 3.5vw;
   border: 4px DimGray solid;
+  box-sizing: border-box;
+  float: right;
+  width: 70%;
+  height: 6vw;
+}
+
+button.dartsCurrent{
+  font-size: 1vw;
+  width: 30%;
+  height: 6vw;
+  float:left;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  border: 1px white solid;
   box-sizing: border-box;
 }
