@@ -1,7 +1,8 @@
-const dartState = ["MISS", "SINGLE ", "DOUBLE ", "TRIPLE "];
-const maxPlayerNum = 4;
-const dartScore = [20, 19, 18, 17, 16, 15, 25];
-const playerIndexOrderInHtml = [
+const DARTSSTATE = ["MISS", "SINGLE ", "DOUBLE ", "TRIPLE "];
+const HITNUMICONNAME = ["null.png", "single_w.png", "double_w.png", "triple_w.png"];
+const MAXPLAYERNUM = 4;
+const DARTSSCORE = [20, 19, 18, 17, 16, 15, 25];
+const PLAYERINDEXORDERINHTML = [
   [1],
   [1, 2],
   [0, 1, 2],
@@ -26,7 +27,7 @@ function initialize() {
   currentRoundDartInd = 0;
   currentRoundInd = 0;
   currentPlayer = 0;
-  currentPlayerIndexOrder = playerIndexOrderInHtml[numPlayer - 1];
+  currentPlayerIndexOrder = PLAYERINDEXORDERINHTML[numPlayer - 1];
   hitNumRec = new Array(numPlayer);
   hitMagRec = new Array(numPlayer);
   hitNumTimes = new Array(numPlayer);
@@ -48,9 +49,9 @@ function initialize() {
     }
   }
 
-  for (var player = 0; player < maxPlayerNum; ++player){
-    for (var scoreInd = 0; scoreInd < dartScore.length; ++scoreInd) {
-      document.getElementById("player" + player + "Num" + dartScore[scoreInd]).src = "null.png";
+  for (var player = 0; player < MAXPLAYERNUM; ++player){
+    for (var scoreInd = 0; scoreInd < DARTSSCORE.length; ++scoreInd) {
+      document.getElementById("player" + player + "Num" + DARTSSCORE[scoreInd]).src = HITNUMICONNAME[0];
     }
     document.getElementById("player" + player + "Score").innerText = 0;
     document.getElementById("player" + player + "ScoreDiv").style.backgroundColor = "black";
@@ -61,6 +62,7 @@ function initialize() {
   document.getElementById("roundInd").innerText = "1 / " + numRound;
   clearCurrentDart();
   whitenPlayerScore();
+  claerHitHistory();
   document.getElementById("player" + currentPlayerIndexOrder[0] + "ScoreDiv").style.backgroundColor = "red";
   document.getElementById("player" + currentPlayerIndexOrder[0] + "Result").style.backgroundColor = "rgb(47, 47, 47)";
   document.getElementById("btnEnter").style.color = "white";
@@ -78,7 +80,7 @@ function hitNum(num) {
 }
 
 function showCurrentDart(index) {
-  var showText = dartState[currentRoundMag[index]];
+  var showText = DARTSSTATE[currentRoundMag[index]];
   var showColor = "white";
   if (currentRoundNum[index] == 25) { // BULL
     if (currentRoundMag[index] == 1){
@@ -121,7 +123,7 @@ function hitMag(mag) {
 }
 
 function pressEnter() {
-  if (currentRoundDartInd == 3) {
+  if (currentRoundDartInd == 3 && currentRoundInd < numRound) {
     hitNumRec[currentPlayer][currentRoundInd] = currentRoundNum;
     hitMagRec[currentPlayer][currentRoundInd] = currentRoundMag;
 
@@ -140,6 +142,7 @@ function pressEnter() {
           ++currentRoundInd;
           currentPlayer = 0;
           updatePlayerScore();
+          updateHitDartsHistory();
           currentRoundDartInd = 0;
           currentRoundNum = [0, 0, 0];
           currentRoundMag = [1, 1, 1];
@@ -158,16 +161,12 @@ function pressEnter() {
             }
           }else{
             var winnerScore = -1;
-            console.log("ELSE");
             for (var player = 0; player < numPlayer; ++player) {
-              console.log("for", player);
               if (winnerScore < playerScore[player]) {
-                console.log("for", player, "T");
                 winnerScore = playerScore[player];
                 whitenPlayerScore();
                 document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "yellow";
               } else if (winnerScore == playerScore[player]) {
-                console.log("for", player, "=");
                 document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").style.color = "yellow";
               }
             }
@@ -183,6 +182,7 @@ function pressEnter() {
     }
 
     updatePlayerScore();
+    updateHitDartsHistory();
     currentRoundNum = [0, 0, 0];
     currentRoundMag = [1, 1, 1];
     currentRoundDartInd = 0;
@@ -205,7 +205,7 @@ function clearCurrentDart() {
 }
 
 function whitenPlayerScore() {
-  for (var player = 0; player < maxPlayerNum; ++player) {
+  for (var player = 0; player < MAXPLAYERNUM; ++player) {
     document.getElementById("player" + player + "ScoreDiv").style.backgroundColor = "black";
     document.getElementById("player" + player + "Result").style.backgroundColor = "black";
     document.getElementById("player" + player + "Score").style.color = "black";
@@ -251,6 +251,7 @@ function pressDelete() {
     showCurrentDart(0);
     showCurrentDart(1);
     updatePlayerScore();
+    updateHitDartsHistory();
   }
   if (currentRoundDartInd < 3) {
     document.getElementById("btnEnter").style.color = "white";
@@ -262,8 +263,8 @@ function updatePlayerScore() {
   playerHitTimes = new Array(numPlayer);
   for (var player = 0; player < numPlayer; ++player) {
     playerScore[player] = 0;
-    playerHitTimes[player] = new Array(dartScore.length);
-    for (var score_i = 0; score_i < dartScore.length; ++score_i) {
+    playerHitTimes[player] = new Array(DARTSSCORE.length);
+    for (var score_i = 0; score_i < DARTSSCORE.length; ++score_i) {
       playerHitTimes[player][score_i] = 0;
     }
   }
@@ -274,22 +275,23 @@ function updatePlayerScore() {
         break;
       }
       for (var i = 0; i < 3; ++i) {
-        var score_i = dartScore.indexOf(hitNumRec[player][round][i]);
+        var score_i = DARTSSCORE.indexOf(hitNumRec[player][round][i]);
         if (score_i < 0) continue;
         var currentHit = playerHitTimes[player][score_i];
         playerHitTimes[player][score_i] += hitMagRec[player][round][i];
         var maxi = (currentHit > 3) ? currentHit : 3;
-        var scoreGain = (playerHitTimes[player][score_i] - maxi) * dartScore[score_i];
-        if ( numPlayer <= 2 && scoreGain > 0){
-          playerScore[player] += scoreGain;
-        }else if (scoreGain > 0){
-          for (var otherPlayer = 0; otherPlayer < numPlayer; ++otherPlayer) {
-            if (scoreGain > 0 && otherPlayer != player && playerHitTimes[otherPlayer][score_i] < 3) {
+        var scoreGain = (playerHitTimes[player][score_i] - maxi) * DARTSSCORE[score_i];
+        for (var otherPlayer = 0; otherPlayer < numPlayer; ++otherPlayer) {
+          if (scoreGain > 0 && otherPlayer != player && playerHitTimes[otherPlayer][score_i] < 3) {
+            if(numPlayer <= 2){
+              playerScore[player] += scoreGain;
+            }else{
               playerScore[otherPlayer] += scoreGain;
-
             }
+          }else if(scoreGain > 0 && numPlayer == 1){
+            playerScore[player] += scoreGain;
           }
-        } 
+        }
       }
     }
   }
@@ -302,20 +304,20 @@ function updateDartsResultPic(){
   var allPlayerClose = [0, 0, 0, 0, 0, 0, 0]; // 20, 19, 18 ... 15,  Bull
   for (var player = 0; player < numPlayer; ++player) {
     document.getElementById("player" + currentPlayerIndexOrder[player] + "Score").innerText = playerScore[player];
-    for (var score_i = 0; score_i < dartScore.length; ++score_i) {
-      updatePicture("player" + currentPlayerIndexOrder[player] + "Num" + dartScore[score_i], hitNumTimes[player][score_i]);
+    for (var score_i = 0; score_i < DARTSSCORE.length; ++score_i) {
+      updatePicture("player" + currentPlayerIndexOrder[player] + "Num" + DARTSSCORE[score_i], hitNumTimes[player][score_i]);
       if (hitNumTimes[player][score_i] >= 3){
         ++allPlayerClose[score_i];
       }
     }
   }
-  for (var score_i = 0; score_i < dartScore.length; ++score_i) {
+  for (var score_i = 0; score_i < DARTSSCORE.length; ++score_i) {
     for (var player = 0; player < numPlayer; ++player) {
-      // console.log("player" + player + "Num" + dartScore[score_i]);
+      // console.log("player" + player + "Num" + DARTSSCORE[score_i]);
       if(allPlayerClose[score_i] == numPlayer){
-        document.getElementById("player" + currentPlayerIndexOrder[player] + "Num" + dartScore[score_i]).style.opacity = "0.3";
+        document.getElementById("player" + currentPlayerIndexOrder[player] + "Num" + DARTSSCORE[score_i]).style.opacity = "0.3";
       }else{
-        document.getElementById("player" + currentPlayerIndexOrder[player] + "Num" + dartScore[score_i]).style.opacity = "1";
+        document.getElementById("player" + currentPlayerIndexOrder[player] + "Num" + DARTSSCORE[score_i]).style.opacity = "1";
       }
     }
   }
@@ -325,7 +327,7 @@ function calculateMPR() {
   for (var player = 0; player < numPlayer; ++player) {
     var totalCount = 0,
       toatalClose = 0;
-    for (var score_i = 0; score_i < dartScore.length; ++score_i) {
+    for (var score_i = 0; score_i < DARTSSCORE.length; ++score_i) {
       totalCount += hitNumTimes[player][score_i];
       if (hitNumTimes[player][score_i] >= 3) {
         ++toatalClose;
@@ -362,14 +364,10 @@ function printlog(fun) {
 }
 
 function updatePicture(id, hitTimes) {
-  if (hitTimes == 0) {
-    document.getElementById(id).src = "null.png";
-  } else if (hitTimes == 1) {
-    document.getElementById(id).src = "single_w.png";
-  } else if (hitTimes == 2) {
-    document.getElementById(id).src = "double_w.png";
-  } else if (hitTimes >= 3) {
-    document.getElementById(id).src = "triple_w.png";
+  if (hitTimes < 3) {
+    document.getElementById(id).src = HITNUMICONNAME[hitTimes];
+  } else {
+    document.getElementById(id).src = HITNUMICONNAME[3];
   }
 }
 
@@ -387,7 +385,7 @@ function pressFullScreen() {
 }
 
 function changeRound(round) {
-  if (round != numRound && confirm("It will reset the game. Press YES to continiue.")) {
+  if (round != numRound && confirm("It will reset the game. Press OK to continiue.")) {
     numRound = round;
     initialize();
   } else {
@@ -396,10 +394,51 @@ function changeRound(round) {
 }
 
 function changePlayer(player) {
-  if (player != numPlayer && confirm("It will reset the game. Press YES to continiue.")) {
+  if (player != numPlayer && confirm("It will reset the game. Press OK to continiue.")) {
     numPlayer = player;
     initialize();
   } else {
     // Do nothing!
+  }
+}
+function claerHitHistory(){
+  var parent = document.getElementById("histroyResult");
+
+  for( var i = parent.childElementCount; i > 0; --i){
+    parent.removeChild(parent.lastElementChild);
+  }
+}
+// const todoList = document.querySelector('histroyResult');
+function updateHitDartsHistory(){
+  var parent = document.getElementById("histroyResult");
+  claerHitHistory();
+
+  for (var round = 0; round < currentRoundInd; ++round){
+    var DIV = document.createElement("DIV");
+    var P = document.createElement("P");
+    P.className = "round";
+    P.innerHTML = 'R' + (round + 1);
+    DIV.appendChild(P);
+    for (var darts = 2; darts >= 0; --darts){
+      var hitDartsNum = hitMagRec[currentPlayer][round][darts];
+      var IMG = document.createElement("IMG");
+      IMG.className = "round";
+      if (hitDartsNum == 0){
+        IMG.src = "miss_w.png";
+      } else {
+        IMG.src = HITNUMICONNAME[hitDartsNum];
+      }
+      DIV.appendChild(IMG);
+    }
+    parent.appendChild(DIV);
+    // console.log(DIV);
+  }
+  if (currentRoundInd != numRound){
+    var DIV = document.createElement("DIV");
+    var P = document.createElement("P");
+    P.className = "round";
+    P.innerHTML = 'R' + (currentRoundInd + 1);
+    DIV.appendChild(P);
+    parent.appendChild(DIV);
   }
 }

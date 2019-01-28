@@ -98,15 +98,15 @@ div.scrollResult {
 p.round {
   background-color: white;
   color: black;
-  font-size: 5vw;
+  font-size: 4vw;
   float: left;
-  width: 34%;
+  width: 30%;
   text-align: left;
 }
 
 img.round {
-  width: 18%;
-  padding: 1% 2%;
+  width: 16%;
+  padding: 1% 3%;
   float: right;
 }
 
