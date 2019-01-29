@@ -10,9 +10,12 @@
   <body onload="initialize();" style="width: 100vw; height: 56.25vw; background-color: black">
     <div id="frame">
       <div style="width: 100%; height: 80%;">
-        <div style="width: 28%; height: 100%;">
-          <p class="MPR" style="font-size: 3vw; text-align: left;  background-color: MidnightBlue;">STANDARD</p>
-          <p class="MPR" style="font-size: 3vw; text-align: left;  background-color: MidnightBlue;">CRICKET</p>
+        <div style="width: 28%; height: 100%; background-color: MidnightBlue;">
+          <div style="width: 65%; float:left;">
+            <p class="MPR" style="font-size: 3vw; text-align: left;">STANDARD</p>
+            <p class="MPR" style="font-size: 3vw; text-align: left;">CRICKET</p>
+          </div>
+          <button class="setRound" style="float: right" onclick="pressFullScreen()">FULL SCREEN</button>
           <div  style="width: 50%;">
             <p class="MPR" id="roundInd" style="font-size: 4vw; text-align: center; background-color: MediumBlue; ">14 / 20</p>
           </div>
@@ -28,8 +31,7 @@
               <img class="round" src="null.png">
             </div>
           </div>
-          <div>
-            <button class="setRound" onclick="pressFullScreen()">FULL SCREEN</button>
+          <!-- <div>
             <button class="setRound" onclick="changeRound(10)">Round 10</button>
             <button class="setRound" onclick="changeRound(15)">Round 15</button>
             <button class="setRound" onclick="changeRound(20)">Round 20</button>
@@ -39,10 +41,10 @@
             <button class="setPlayer" onclick="changePlayer(2)">2P</button>
             <button class="setPlayer" onclick="changePlayer(3)">3P</button>
             <button class="setPlayer" onclick="changePlayer(4)">4P</button>
-          </div>
+          </div> -->
         </div>
         <div style="width: 44%; height: 80%; ">
-          <div id="player0Result" class="hitDarts" style="border: 4px MediumSlateBlue  solid; ">
+          <div id="player0Result" class="hitDarts" style="border: 4px red  solid; ">
             <img class="hitDarts" id="player0Num20" src="null.png">
             <img class="hitDarts" id="player0Num19" src="null.png">
             <img class="hitDarts" id="player0Num18" src="null.png">
@@ -88,12 +90,27 @@
             <img class="hitDarts" id="player3Num25" src="null.png">
           </div>
         </div>
-        <div style="width: 28%; height: 80%; background-color: Darkred;">
-          <div  style="width: 13%;">
-            <p id="currentPlayer" class="MPR" style="font-size: 2.7vw; text-align: left; background-color: MediumBlue; padding: 0px 8px">P1</p>
+        <div style="width: 28%; height: 80%;">
+          <div  style="width: 15%;">
+            <p id="currentPlayer" class="MPR" style="font-size: 2.4vw; text-align: left; background-color: MediumBlue; padding: 0px 8px">P1</p>
           </div>
-          <div  style="width: 87%;">
-            <p class="MPR" style="font-size: 2.4vw; text-align: left; text-align: center">DART & RESULT</p>
+          <div  style="width: 85%;">
+            <p class="MPR" style="font-size: 2.4vw; text-align: left; text-align: center; background-color: Darkred;">DART & RESULT</p>
+          </div>
+          <div  style="width: 60%;">
+            <select id="selectBoxPlayRound" onchange="changeRound();">
+              <option value="10">10 Round</option>
+              <option value="15" selected="selected">15 Round</option>
+              <option value="20">20 Round</option>
+             </select>
+          </div>
+          <div  style="width: 40%;">
+            <select id="selectBoxPlayerNum" onchange="changePlayer();">
+              <option value="1">1P</option>
+              <option value="2">2P</option>
+              <option value="3">3P</option>
+              <option value="4" selected="selected">4P</option>
+             </select>
           </div>
           <div style="width: 100%;">
             <button class="dartsCurrent" onclick="pressReset()">RESET</button>
@@ -118,19 +135,19 @@
         </div>
       </div>
       <div style="height: 20%; background-color: black;">
-        <div id="player0ScoreDiv" class="score" style="border-color: MediumSlateBlue  ">
+        <div id="player0ScoreDiv" class="score">
           <p class="score" id="player0Score" >0</p>
           <p class="MPR" id="player0MPR">0 (0)</p>
         </div>
-        <div id="player1ScoreDiv" class="score" style="border-color: blue">
+        <div id="player1ScoreDiv" class="score">
           <p class="score" id="player1Score" >0</p>
           <p class="MPR" id="player1MPR">0 (0)</p>
         </div>
-        <div id="player2ScoreDiv" class="score" style="border-color: gold">
+        <div id="player2ScoreDiv" class="score">
           <p class="score" id="player2Score" >0</p>
           <p class="MPR" id="player2MPR">0 (0)</p>
         </div>
-        <div id="player3ScoreDiv" class="score" style="border-color: green">
+        <div id="player3ScoreDiv" class="score">
           <p class="score" id="player3Score" >0</p>
           <p class="MPR" id="player3MPR">0 (0)</p>
         </div>

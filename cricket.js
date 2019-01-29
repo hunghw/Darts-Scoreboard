@@ -9,6 +9,8 @@ const PLAYERINDEXORDERINHTML = [
   [0, 1, 2],
   [0, 1, 2, 3]
 ];
+const PLAYERBACKGROUNDCOLOR = ["IndianRed", "CornflowerBlue", "Peru", "SeaGreen"];
+const PLAYERBORDERCOLOR = ["red", "blue", "gold", "green"];
 var hitTimes = 0;
 var numPlayer = 4,
   numRound = 15;
@@ -56,6 +58,7 @@ function initialize() {
     }
     document.getElementById("player" + player + "Score").innerText = 0;
     document.getElementById("player" + player + "ScoreDiv").style.backgroundColor = "black";
+    document.getElementById("player" + player + "ScoreDiv").style.borderColor = PLAYERBORDERCOLOR[currentPlayerIndexOrder[player]];
     document.getElementById("player" + player + "Result").style.backgroundColor = "black";
     document.getElementById("player" + player + "MPR").innerHTML = "0 (0)";
   }
@@ -64,7 +67,8 @@ function initialize() {
   clearCurrentDart();
   whitenPlayerScore();
   claerHitHistory();
-  document.getElementById("player" + currentPlayerIndexOrder[0] + "ScoreDiv").style.backgroundColor = "red";
+  document.getElementById("player" + currentPlayerIndexOrder[0] + "ScoreDiv").style.backgroundColor = PLAYERBACKGROUNDCOLOR[currentPlayerIndexOrder[0]];
+  document.getElementById("player" + currentPlayerIndexOrder[0] + "ScoreDiv").style.borderColor = "black";
   document.getElementById("player" + currentPlayerIndexOrder[0] + "Result").style.backgroundColor = "DimGray";
   document.getElementById(DARTSMAGBTN[1]).style.backgroundColor = "DimGray";
   document.getElementById("btnEnter").style.color = "white";
@@ -201,7 +205,8 @@ function pressEnter() {
     currentRoundMag = [1, 1, 1];
     currentRoundDartInd = 0;
     clearCurrentDart();
-    document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "ScoreDiv").style.backgroundColor = "red";
+    document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "ScoreDiv").style.backgroundColor = PLAYERBACKGROUNDCOLOR[currentPlayerIndexOrder[currentPlayer]];
+    document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "ScoreDiv").style.borderColor = "black";
     document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "Result").style.backgroundColor = "DimGray";
   }
 
@@ -221,6 +226,7 @@ function clearCurrentDart() {
 function whitenPlayerScore() {
   for (var player = 0; player < MAXPLAYERNUM; ++player) {
     document.getElementById("player" + player + "ScoreDiv").style.backgroundColor = "black";
+    document.getElementById("player" + player + "ScoreDiv").style.borderColor = PLAYERBORDERCOLOR[currentPlayerIndexOrder[player]];
     document.getElementById("player" + player + "Result").style.backgroundColor = "black";
     document.getElementById("player" + player + "Score").style.color = "black";
     document.getElementById("player" + player + "MPR").style.color = "black";
@@ -240,21 +246,21 @@ function pressDelete() {
     document.getElementById("currentDart" + currentRoundDartInd).innerText = "-";
     document.getElementById("currentDart" + currentRoundDartInd).style.color = "white";
   } else {
-    whitenPlayerScore();
-    clearCurrentDart();
     if (currentPlayer > 0) { // goto previous player
-      // document.getElementById("player" + currentPlayer + "Score").style.color = "white";
+      whitenPlayerScore();
+      clearCurrentDart();
       --currentPlayer;
 
     } else if (currentRoundInd > 0) { // goto previous round
-      // document.getElementById("player" + currentPlayer + "Score").style.color = "white";
+      whitenPlayerScore();
+      clearCurrentDart();
       currentPlayer = numPlayer - 1;
       --currentRoundInd;
     } else {
       return;
     }
     currentRoundDartInd = 2;
-    document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "ScoreDiv").style.backgroundColor = "red";
+    document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "ScoreDiv").style.backgroundColor = PLAYERBACKGROUNDCOLOR[currentPlayerIndexOrder[currentPlayer]];
     document.getElementById("player" + currentPlayerIndexOrder[currentPlayer] + "Result").style.backgroundColor = "DimGray";
     currentRoundMag = hitMagRec[currentPlayer][currentRoundInd];
     currentRoundNum = hitNumRec[currentPlayer][currentRoundInd];
@@ -398,21 +404,25 @@ function pressFullScreen() {
   }
 }
 
-function changeRound(round) {
+function changeRound() {
+  var selectBox = document.getElementById("selectBoxPlayRound");
+  var round = selectBox.options[selectBox.selectedIndex].value;
   if (round != numRound && confirm("It will reset the game. Press OK to continiue.")) {
     numRound = round;
     initialize();
   } else {
-    // Do nothing!
+    selectBox.value = numRound;
   }
 }
 
 function changePlayer(player) {
+  var selectBox = document.getElementById("selectBoxPlayerNum");
+  var player = selectBox.options[selectBox.selectedIndex].value;
   if (player != numPlayer && confirm("It will reset the game. Press OK to continiue.")) {
     numPlayer = player;
     initialize();
   } else {
-    // Do nothing!
+    selectBox.value = player;
   }
 }
 function claerHitHistory(){
