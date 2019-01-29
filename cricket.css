@@ -175,18 +175,18 @@ button.score {
 p.dartsCurrent{
   color: white;
   background-color: black;
-  font-size: 3.5vw;
+  font-size: 3.2vw;
   border: 4px DimGray solid;
   box-sizing: border-box;
   float: right;
   width: 70%;
-  height: 5.5vw;
+  height: 4.8vw;
 }
 
 button.dartsCurrent{
   font-size: 1.8vw;
   width: 30%;
-  height: 5.5vw;
+  height: 4.8vw;
   float:left;
   font-weight: bold;
   color: white;
